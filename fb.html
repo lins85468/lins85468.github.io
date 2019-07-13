@@ -57,9 +57,10 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function start() {
     //呼叫Graph API:FB.api(連線網址,呼叫函式(結果));
-    FB.api('https://graph.facebook.com/10212526261466224', function(response) {
+    FB.api('/me', function(response) {
         console.log(response);
-
+        let main=document.querySelector("#main");
+        main.innerHTML=response.name;
     });
   }
 </script>
