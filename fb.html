@@ -16,13 +16,12 @@
     if (response.status === 'connected') {//使用者已授權，開始應用程式
         main.style.display="block";
     } else {//使用者未授權，鼓勵使用者授權
-     welcome.style.display="block";
+        welcome.style.display="block";
     }
   }
-
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+  function login(){
+    FB.login(function(response){
+        statusChangeCallback(response);
     });
   }
 
@@ -66,7 +65,7 @@
 </script>
 <h3>Facebook Login</h3>
 <div id="welcome" style="display:none">
-    <button>Facebook Login</button>
+    <button onclick="login();">Facebook Login</button>
 </div>
 
 <div id="main" style="display:none">
