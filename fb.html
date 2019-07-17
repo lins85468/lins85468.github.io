@@ -22,7 +22,7 @@
   function login(){
     FB.login(function(response){
         statusChangeCallback(response);
-    }, {scope:"email,user_gender,user_posts,manage_pages"});
+    }, {scope:"email,user_gender,user_posts,manage_pages,publish_pages"});
   }
   window.fbAsyncInit = function() {
       //初始化 Facebook 套件 
@@ -61,10 +61,20 @@
     FB.api('/me/feed',function(response){
         console.log(response);
     });
+    
+    //抓使用者管理的粉絲專業
+    FB.api('/me/accounts',function(response){
+        console.log(response);
+    });
     */
     //抓使用者管理的粉絲專業
     FB.api('/me/accounts',function(response){
         console.log(response);
+        let pageToken=response.data[1].access_token;
+        let pageId=response.data[1].id;
+    FB.api("/"+pageId+"/feed","POST",{message: "This is a test message"},function(response){
+        console.log(response);
+        });
     });
   }
 </script>
