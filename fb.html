@@ -51,7 +51,7 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function start() {
     //使用FB.api呼叫Facebook Graph API:(連線網址,呼叫函式(結果));
-    FB.api('/me?fields=id,name,email,user_gender', function(response) {
+    FB.api('/me?fields=id,name,email,gender', function(response) {
         console.log(response);
         let main=document.querySelector("#main");
         main.innerHTML=response.name;
