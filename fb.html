@@ -54,7 +54,7 @@
     FB.api('/me?fields=id,name,email,gender', function(response) {
         console.log(response);
         let main=document.querySelector("#main");
-        main.innerHTML=response.name+ " <img src='https://graph.facebook.com/"+response.id+"/picture' />";
+        main.innerHTML=response.name+" <img src='https://graph.facebook.com/"+response.id+"/picture' />";
     });
   }
 </script>
