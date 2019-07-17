@@ -80,7 +80,7 @@ let pageToken,pageId;
 
 function post(){
     let message=document.querySelector("#message").value;
- FB.api("/"+pageId+"/feed?access_token="+pageToken,"POST",{message: "This is a test message"},function(response){
+ FB.api("/"+pageId+"/feed?access_token="+pageToken,"POST",{message:message},function(response){
         console.log(response);
         alert("ok");
         });
