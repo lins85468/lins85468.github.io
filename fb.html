@@ -86,8 +86,15 @@ function post(){
         });
 }
 
+function share(){FB.ui({
+  method: 'share',
+  href: 'https://training.pada-x.com/',
+}, function(response){});
+}
+
 </script>
 <h3>Facebook Login</h3>
+<button onclick="share();">share</button>
 <div id="welcome" style="display:none">
     <button onclick="login();">Facebook Login</button>
 
