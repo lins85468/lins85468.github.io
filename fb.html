@@ -11,8 +11,7 @@
     console.log(response);
     let welcome=document.querySelector("#welcome");
     let main=document.querySelector("#main");
-    welcome.style.display="none";
-    main.style.display="none";
+    welcome.style.display= main.style.display="none";
     if (response.status === 'connected') {//使用者已授權，開始應用程式
         main.style.display="block";
         start();
@@ -23,9 +22,8 @@
   function login(){
     FB.login(function(response){
         statusChangeCallback(response);
-    }, {scope:"email"});
+    }, {scope:"email,user_gender"});
   }
-
   window.fbAsyncInit = function() {
       //初始化 Facebook 套件 
     FB.init({
@@ -35,14 +33,11 @@
       xfbml      : true,  // parse social plugins on this page
       version    : 'v3.3' // The Graph API version to use for the call
     });
-
     //偵測使用者是否已經授權/取得使用者的登入狀態
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
-
   };
-
   // 載入 Facebook JavaScript SDK，載入完畢後固定呼叫window.fbAsyncInit()
   //匿名函式立刻呼叫
   (function(d, s, id) {
@@ -52,12 +47,11 @@
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function start() {
-    //呼叫Graph API:FB.api(連線網址,呼叫函式(結果));
-    FB.api('/me?fields=id,name,email', function(response) {
+    //使用FB.api呼叫Facebook Graph API:(連線網址,呼叫函式(結果));
+    FB.api('/me?fields=id,name,email,user_gender', function(response) {
         console.log(response);
         let main=document.querySelector("#main");
         main.innerHTML=response.name;
@@ -76,8 +70,3 @@
 
 </body>
 </html>
-<!--
-你的主網址(Host)
-你的主網址/檔案名稱
-https://lins85468.github.io/fb.html?隨便給幾個字
--->
